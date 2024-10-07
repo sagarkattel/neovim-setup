@@ -16,6 +16,12 @@ vim.opt.rtp:prepend(lazypath)
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.g.mapleader = "\\"
+-- Key mapping to toggle Nvim Tree
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+-- Use xclip for copying and pasting to system clipboard
+vim.api.nvim_set_keymap('v', '<C-c>', ':w !xclip -selection clipboard<CR><CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-v>', ':r !xclip -o -selection clipboard<CR>', { noremap = true, silent = true })
+
 
 -- Lazy.nvim options
 local opts = {
@@ -62,10 +68,6 @@ local plugins ={
                                 empty_open = "📂",   -- empty open folder
                                 symlink = "🔗",      -- symlink folder
                             },
-                            file = {
-                                ["js"] = "📜",       -- JS file icon
-                                ["jsx"] = "🔷",      -- JSX file icon
-                            }
                         },
                     },
                 },
